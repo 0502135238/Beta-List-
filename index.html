@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inservio – Waitlist Sign-Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header img {
+      width: 100px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-card h2 {
+      margin-bottom: 1rem;
+      color: #00c6ff;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+    }
+
+    .success-message {
+      margin-top: 1rem;
+      color: #00ffbf;
+      text-align: center;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="Logo.jpg" alt="Inservio Logo"/>
+    <h1>Inservio – Join the Waitlist</h1>
+    <p>Lock in your spot before we launch. Start building your future one day at a time.</p>
+  </header>
+
+  <div class="form-card">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="tel" id="whatsapp" placeholder="WhatsApp Number" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="text" id="course" placeholder="Course" required />
+      <select id="year" required>
+        <option value="">Select Year</option>
+        <option value="1st Year">1st Year</option>
+        <option value="2nd Year">2nd Year</option>
+        <option value="3rd Year">3rd Year</option>
+        <option value="4th Year">4th Year</option>
+      </select>
+      <button type="submit">Join Waitlist</button>
+    </form>
+    <div id="successMessage" class="success-message" style="display: none;">🎉 You’re in! We’ll reach out soon.</div>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Capture form data
+      const data = {
+        name: document.getElementById("name").value,
+        whatsapp: document.getElementById("whatsapp").value,
+        email: document.getElementById("email").value,
+        course: document.getElementById("course").value,
+        year: document.getElementById("year").value
+      };
+
+      // Save to Google Sheets or show message
+      console.log("Form Data Submitted:", data);
+
+      // For now, show confirmation message
+      document.getElementById("successMessage").style.display = "block";
+
+      // Clear form
+      document.getElementById("signupForm").reset();
+    });
+  </script>
+
+</body>
+</html>
